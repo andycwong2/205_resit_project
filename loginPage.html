@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<title>SMS Login</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}">
+</head>
+<body>
+    <h3>School Management System Login</h3>
+	<div class="container">
+      <form action=/loginPage method="POST">
+      <div class="row">
+        <input type="text" id="uname" name="username" placeholder="Your user name">
+      </div>
+	  <div class="row">
+        <input type="password" id="pw" name="password" placeholder="Password">
+      </div>
+	  <input type="submit" value="Login">
+	  </form>
+    <p class=error>{{error}}</p>
+	</div>
+  <script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

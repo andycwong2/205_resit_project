@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>SMS Score Input</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<img src="{{url_for('static',filename='school_bg.jpg')}}" id="open" alt="topImage" height="200">
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="#">Take attendence</a>
+      <a href="/input">Input students' scores</a>
+      <a href="#">Show the distribution graph</a>
+	  <a href="/about">About us</a>
+    </div>
+    <nav>
+      <h3>You are logged in as {{user}}. <a href="/logout">Click here to logout</a>
+    </nav>
+	<main>
+	  <section>
+	  <article>
+	    <center><h3>Input successful!</h3></center>
+		<a id="input_another" href="/input">Click here to input another set of data</a>
+	  </article>
+	  </section>
+	</main>
+	<script src="{{url_for('static', filename='input.js')}}"></script>
+</body>
+</html>

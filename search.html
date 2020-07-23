@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>SMS Score Input</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<img src="{{url_for('static',filename='school_bg.jpg')}}" id="open" alt="topImage" height="200">
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="#">Search student information</a>
+      <a href="#">Check timetables</a>
+      <a href="/search">Search for scores</a>
+	  <a href="/about">About us</a>
+    </div>
+    <nav>
+      <h3>You are logged in as {{user}}. <a href="/logout">Click here to logout</a>
+    </nav>
+	<main>
+	  <section>
+	  <article>
+	    <center><h2>Score data Searching</h2></center>
+		
+		<form action="/input" method="POST">
+		<div id="cls">
+          <label for="class">Class:</label>
+
+          <select id="class" name="cls">
+            <option value="none" selected disabled hidden> Choose a class</option> 
+			<option value="1A">1A</option>
+            <option value="1B">1B</option>
+            <option value="1C">1C</option>
+            <option value="1D">1D</option>
+		    <option value="2A">2A</option>
+		    <option value="2B">2B</option>
+		    <option value="2C">2C</option>
+		    <option value="2D">2D</option>
+			<option value="3A">3A</option>
+		    <option value="3B">3B</option>
+		    <option value="3C">3C</option>
+		    <option value="3D">3D</option>
+			<option value="4A">4A</option>
+		    <option value="4B">4B</option>
+		    <option value="4C">4C</option>
+		    <option value="4D">4D</option>
+			<option value="5A">5A</option>
+		    <option value="5B">5B</option>
+		    <option value="5C">5C</option>
+		    <option value="5D">5D</option>
+			<option value="6A">6A</option>
+		    <option value="6B">6B</option>
+		    <option value="6C">6C</option>
+		    <option value="6D">6D</option>
+          </select>
+        </div>
+		<br>
+		<div id="clsno">Class number :
+          <input type="text" id="clsnumber" name="clsnumber"/>
+        </div>
+		<div id="nextpage">
+		  <input type="submit" value="Submit">
+		</div>
+	    </form>
+	  </article>
+	  </section>
+	</main>
+</body>
+</html>

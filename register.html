@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<title>Register to SMS</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}">
+</head>
+<body>
+	<div class="container">
+    <form action=/register method="POST">
+      <div class="row">
+        <input type="text" id="uname" name="username" placeholder="User name">
+      </div>
+	    <div class="row">
+        <input type="password" id="pw" name="password" placeholder="Password">
+      </div>
+      <div class="row">
+        <input type="password" id="pw_cf" name="password_c" placeholder="Confirm password">
+      </div>
+      <div class="row">
+        <label for="identity">Identity of the user:</label><br>
+        <input type="radio" id="student" name="identity" value="student" checked>
+        <label for="student">Student</label>
+        <input type="radio" id="teacher" name="identity" value="teacher">
+        <label for="student">Teacher</label>
+      </div>
+	    <input type="submit" value="Submit">
+	  </form>
+    <p class=error>{{error}}</p>
+	</div>
+  <script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

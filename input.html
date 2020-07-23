@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>SMS Score Input</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<img src="{{url_for('static',filename='school_bg.jpg')}}" id="open" alt="topImage" height="200">
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="#">Take attendence</a>
+      <a href="/input">Input students' scores</a>
+      <a href="#">Show the distribution graph</a>
+	  <a href="/about">About us</a>
+    </div>
+    <nav>
+      <h3>You are logged in as {{user}}. <a href="/logout">Click here to logout</a>
+    </nav>
+	<main>
+	  <section>
+	  <article>
+	    <center><h2>Student score input</h2></center>
+		
+		<form action="/input" method="POST">
+		<div id="cls">
+          <label for="class">Class:</label>
+
+          <select id="class" name="cls">
+            <option value="none" selected disabled hidden> Choose a class</option> 
+			<option value="1a">1A</option>
+            <option value="1b">1B</option>
+            <option value="1c">1C</option>
+            <option value="1d">1D</option>
+		    <option value="2a">2A</option>
+		    <option value="2b">2B</option>
+		    <option value="2c">2C</option>
+		    <option value="2d">2D</option>
+			<option value="3a">3A</option>
+		    <option value="3b">3B</option>
+		    <option value="3c">3C</option>
+		    <option value="3d">3D</option>
+			<option value="4a">4A</option>
+		    <option value="4b">4B</option>
+		    <option value="4c">4C</option>
+		    <option value="4d">4D</option>
+			<option value="5a">5A</option>
+		    <option value="5b">5B</option>
+		    <option value="5c">5C</option>
+		    <option value="5d">5D</option>
+			<option value="6a">6A</option>
+		    <option value="6b">6B</option>
+		    <option value="6c">6C</option>
+		    <option value="6d">6D</option>
+          </select>
+        </div>
+		<br>
+		<div id="clsno">Class number :
+          <input type="text" id="clsnumber" name="clsnumber" /><a id="clsnocheck"></a>
+        </div>
+		
+		<input id="button" type="button" value="Go!" onclick=checkStudent(clsnumber.value)>
+		
+        <div id="subject" hidden>
+		  <label for="subject">Select a subject:</label>
+
+          <select id="subject" name="subject">
+            <option value="chi">Chinese</option>
+            <option value="eng">English</option>
+            <option value="math">Maths</option>
+            <option value="phy">Physics</option>
+		    <option value="chem">Chemistry</option>
+		    <option value="bio">Biology</option>
+		    <option value="econ">Economics</option>
+		    <option value="ict">ICT</option>
+          </select>
+		</div>
+		<br>
+		<div id="cw" hidden>Coursework score :
+          <input type="text" id="cwscore" name="cwscore" /><a id="cwcheck"></a>
+        </div>
+        <br>
+        <div id="jt" hidden>Joint test score :
+          <input type="text" id="jtscore" name="jtscore"  /><a id="jtcheck"></a>
+        </div>
+		<br>
+        <div id="exm" hidden>Exam score :
+          <input type="text" id="exmscore" name="exmscore"  /><a id="exmcheck"></a>
+        </div>
+		<div id="submit" hidden>
+		  <input id="button2" type="button" value="Check score" onclick=checkScore(cwscore.value,jtscore.value,exmscore.value)>
+		</div>
+		<div id="nextpage" hidden>
+		  <input type="submit" value="Submit">
+		</div>
+	    </form>
+	  </article>
+	  </section>
+	</main>
+	<script src="{{url_for('static', filename='input.js')}}"></script>
+</body>
+</html>

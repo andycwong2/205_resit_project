@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<title>SMS Home</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+  <img src="{{url_for('static',filename='school_bg.jpg')}}" id="open" alt="topImage" height="200">
+	<div class="navbar">
+    <a href="/">Home</a>
+    <a href="#">Search student information</a>
+    <a href="#">Check timetables</a>
+    <a href="#">Search for scores</a>
+		<a href="/about">About us</a>
+  </div>
+  <nav>
+    <h3>You are logged in as {{user}}. <a href="/logout">Click here to logout</a>
+  </nav>
+</body>
+</html>
