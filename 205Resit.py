@@ -204,7 +204,7 @@ def search():
 				resultTable+="<td>%.2f</td>"%total
 				resultTable+="</tr>"
 			resultTable+="</table>"
-			return redirect(url_for("search_result",statement=statement, resultTable=resultTable))
+		return redirect(url_for("search_result",statement=statement, resultTable=resultTable))
 	return render_template("search.html", **locals())
 	db.close()
 
