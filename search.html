@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<title>SMS Score Input</title>
+	<title>SMS Score Search</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
 </head>
 <body>
@@ -23,7 +23,7 @@
 	  <article>
 	    <center><h2>Score data Searching</h2></center>
 		
-		<form action="/input" method="POST">
+		<form action="/search" method="POST">
 		<div id="cls">
           <label for="class">Class:</label>
 
@@ -57,14 +57,16 @@
         </div>
 		<br>
 		<div id="clsno">Class number :
-          <input type="text" id="clsnumber" name="clsnumber"/>
+          <input type="text" id="clsnumber" name="clsnumber"/><a id="clsnocheck"></a>
         </div>
-		<div id="nextpage">
+        <input id="button" type="button" value="Go!" onclick=checkStudent(clsnumber.value)>
+		<div id="nextpage" hidden>
 		  <input type="submit" value="Submit">
 		</div>
 	    </form>
 	  </article>
 	  </section>
 	</main>
+ <script src="{{url_for('static', filename='search.js')}}"></script>
 </body>
 </html>

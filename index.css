@@ -118,6 +118,20 @@ div#second{
 	display: none;
 }
 
+table {
+  width: 75%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 15px;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #007f00;

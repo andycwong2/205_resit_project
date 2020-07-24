@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+#from flask_table import Table, Col
 import pymysql
 app = Flask(__name__)
 app.secret_key = 'development key'
@@ -67,6 +68,7 @@ def register():
 					return redirect(url_for("reg_confirm"))
 
 	return render_template("register.html",error=error)
+	db.close()
 
 @app.route("/reg_confirm")
 def reg_confirm():
@@ -154,11 +156,62 @@ def input():
 		return redirect(url_for("input_confirm"))
 
 	return render_template("input.html", user=user)
+	db.close()
 
 @app.route("/input_confirm")
 def input_confirm():
 	user=session['username']
 	return render_template("input_confirm.html", user=user)
+
+@app.route("/search", methods=['POST','GET'])
+def search():
+	user=session['username']
+	statement=""
+	resultTable=""
+	if request.method == 'POST':
+		clas = request.form['cls']
+		clsno = request.form['clsnumber']
+		# prepare a cursor object using cursor() method
+		cursor = db.cursor()
+
+		# Execute the SQL command
+		sql = ("SELECT * FROM scorelist WHERE cls=%s AND clsnumber=%s")
+		cursor.execute(sql,(clas, clsno))
+
+		# Commit your changes in the database
+		db.commit()
+		results = cursor.fetchall()
+		if results == ():
+			statement= "No results are found"
+		else:
+			statement= "The required results are as follows:"
+			resultTable="<table><tr><th>Class</th><th>Class number</th><th>Subject</th><th>Classwork mark</th><th>Joint test mark</th><th>Exam mark</th><th>Overall mark</th></tr>"
+			for row in results:
+				clas = str(row[0])
+				clsno = int(row[1])
+				subj = str(row[2])
+				cw = float(row[3])
+				jt = float(row[4])
+				exm = float(row[5])
+				total = float(row[6])
+				resultTable+="<tr>"
+				resultTable+="<td>%s</td>"%clas
+				resultTable+="<td>%d</td>"%clsno
+				resultTable+="<td>%s</td>"%subj
+				resultTable+="<td>%.2f</td>"%cw
+				resultTable+="<td>%.2f</td>"%jt
+				resultTable+="<td>%.2f</td>"%exm
+				resultTable+="<td>%.2f</td>"%total
+				resultTable+="</tr>"
+			resultTable+="</table>"
+			return redirect(url_for("search_result",statement=statement, resultTable=resultTable))
+	return render_template("search.html", **locals())
+	db.close()
+
+@app.route("/search_result")
+def search_result():
+	user=session['username']
+	return render_template("search_result.html", user=user, statement=request.args.get('statement'), resultTable=request.args.get('resultTable'))
 
 @app.route("/logout")
 def layout():
